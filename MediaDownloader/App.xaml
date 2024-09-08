@@ -1,0 +1,18 @@
+﻿<Application x:Class="MediaDownloader.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MediaDownloader"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemesDictionary Theme="Dark" />
+                <ui:ControlsDictionary />
+            </ResourceDictionary.MergedDictionaries>
+            <FontFamily x:Key="Global">
+                /MediaDownloader;Component/Resources/Font/#iconfont, /MediaDownloader;Component/Resources/Font/#阿里巴巴普惠体 2.0 55 Regular
+            </FontFamily>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

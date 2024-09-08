@@ -1,0 +1,27 @@
+﻿<ui:FluentWindow x:Class="MediaDownloader.Page.Popup.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MediaDownloader"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        mc:Ignorable="d"
+        Title="哔哩哔哩登录" Height="450" Width="800"
+        ResizeMode="NoResize"
+        FontFamily="{StaticResource Global}"
+        d:Background="#313241">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ui:TitleBar Name="WindowTitleBar" Title="哔哩哔哩登录" Grid.Row="0" VerticalContentAlignment="Top" Padding="20,0,0,0"/>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical" Margin="15" >
+            <ui:TextBlock Foreground="White" FontSize="20" FontFamily="{StaticResource Global}" Margin="0,0,0,40">请扫描二维码</ui:TextBlock>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <ui:Image Name="QrCodeImage" Width="256" Height="256"></ui:Image>
+                <ui:TextBlock Name="CodeStatus" Foreground="White" FontSize="20" FontFamily="{StaticResource Global}" Margin="200,0,0,0" VerticalAlignment="Center">等待扫描中</ui:TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</ui:FluentWindow>

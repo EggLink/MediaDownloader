@@ -1,0 +1,107 @@
+﻿<Page x:Class="MediaDownloader.Page.Navigation.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SettingsPage">
+
+    <Grid>
+        <ui:DynamicScrollViewer x:Name="Scrolls" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer.Content>
+                <StackPanel VerticalAlignment="Top" Width="auto" Margin="30">
+                    <ui:TextBlock Margin="0,0,0,20" FontSize="20" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}">设置</ui:TextBlock>
+
+                    <ui:CardControl Name="VideoSavePathCard" VerticalContentAlignment="Top" Margin="0,0,0,12" FontFamily="{StaticResource Global}" >
+                        <ui:CardControl.Icon>
+                            <ui:SymbolIcon Symbol="Video48" />
+                        </ui:CardControl.Icon>
+
+                        <ui:CardControl.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ui:TextBlock Name="VideoSaveTitleText"
+                                              Grid.Row="0"
+                                              Grid.Column="0"
+                                              FontTypography="Body"
+                                              Text="视频存储路径"
+                                              Margin="0,0,0,8"
+                                              TextWrapping="Wrap" />
+                                <ui:TextBlock Name="VideoSaveHintText"
+                                              Grid.Row="1"
+                                              Grid.Column="0"
+                                              Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                              Text="不包括临时路径"
+                                              TextWrapping="Wrap" />
+                            </Grid>
+                        </ui:CardControl.Header>
+                        <ui:TextBox Name="VideoSavePathTextBox" Width="300" LostFocus="VideoSavePathTextBox_OnLostFocus" />
+                    </ui:CardControl>
+
+                    <ui:CardControl Name="CacheSavePathCard" VerticalContentAlignment="Top" Margin="0,0,0,12" FontFamily="{StaticResource Global}" >
+                        <ui:CardControl.Icon>
+                            <ui:SymbolIcon Symbol="Folder48" />
+                        </ui:CardControl.Icon>
+
+                        <ui:CardControl.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ui:TextBlock Name="CacheSaveTitleText"
+                                              Grid.Row="0"
+                                              Grid.Column="0"
+                                              FontTypography="Body"
+                                              Text="临时文件存储路径"
+                                              Margin="0,0,0,8"
+                                              TextWrapping="Wrap" />
+                                <ui:TextBlock Name="CacheSaveHintText"
+                                              Grid.Row="1"
+                                              Grid.Column="0"
+                                              Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                              Text="包括一些视频的视频流与音频流，下载完成后清除"
+                                              TextWrapping="Wrap" />
+                            </Grid>
+                        </ui:CardControl.Header>
+                        <ui:TextBox Name="CacheSavePathTextBox" Width="300" LostFocus="CacheSavePathTextBox_OnLostFocus" />
+                    </ui:CardControl>
+
+                    <ui:CardControl Name="FfmpegSavePathCard" VerticalContentAlignment="Top" Margin="0,0,0,12" FontFamily="{StaticResource Global}" >
+                        <ui:CardControl.Icon>
+                            <ui:SymbolIcon Symbol="Video48" />
+                        </ui:CardControl.Icon>
+
+                        <ui:CardControl.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ui:TextBlock Name="FfmpegSaveTitleText"
+                                              Grid.Row="0"
+                                              Grid.Column="0"
+                                              FontTypography="Body"
+                                              Text="Ffmpeg文件路径"
+                                              Margin="0,0,0,8"
+                                              TextWrapping="Wrap" />
+                                <ui:TextBlock Name="FfmpegSaveHintText"
+                                              Grid.Row="1"
+                                              Grid.Column="0"
+                                              Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                              Text="用于合成哔哩哔哩视频与音频"
+                                              TextWrapping="Wrap" />
+                            </Grid>
+                        </ui:CardControl.Header>
+                        <ui:TextBox Name="FfmpegPathTextBox" Width="300" LostFocus="FfmpegPathTextBox_OnLostFocus" />
+                    </ui:CardControl>
+                </StackPanel>
+            </ScrollViewer.Content>
+        </ui:DynamicScrollViewer>
+    </Grid>
+</Page>

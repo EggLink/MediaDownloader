@@ -1,0 +1,112 @@
+﻿<Page x:Class="MediaDownloader.Page.Navigation.BilibiliPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:local="clr-namespace:MediaDownloader.Page.Navigation"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      FontFamily="{StaticResource Global}"
+      Title="BilibiliPage">
+
+    <Grid>
+        <ui:DynamicScrollViewer x:Name="Scrolls" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer.Content>
+                <StackPanel VerticalAlignment="Top" Width="auto" Margin="30">
+                    <ui:TextBlock Margin="0,0,0,20" FontSize="20" Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}">哔哩哔哩</ui:TextBlock>
+                    <ui:CardControl Name="LoginStatusCard" VerticalContentAlignment="Top" Margin="0,0,0,12" FontFamily="{StaticResource Global}" >
+                        <ui:CardControl.Icon>
+                            <ui:FontIcon Glyph="&#xe602;" FontFamily="{StaticResource Global}"/>
+                        </ui:CardControl.Icon>
+
+                        <ui:CardControl.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ui:TextBlock Name="StatusCardTitleText"
+                                              Grid.Row="0"
+                                              Grid.Column="0"
+                                              FontTypography="Body"
+                                              Text="尚未登录"
+                                              Margin="0,0,0,8"
+                                              TextWrapping="Wrap" />
+                                <ui:TextBlock Name="StatusCardHintText"
+                                              Grid.Row="1"
+                                              Grid.Column="0"
+                                              Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                              Text="选择菜单“账号”登录你的哔哩哔哩账户"
+                                              TextWrapping="Wrap" />
+                            </Grid>
+                        </ui:CardControl.Header>
+
+                    </ui:CardControl>
+                    <ui:CardExpander Header="视频下载" FontFamily="{StaticResource Global}">
+                        <ui:CardExpander.Icon>
+                            <ui:FontIcon Glyph="&#xe606;" FontFamily="{StaticResource Global}"/>
+                        </ui:CardExpander.Icon>
+
+                        <ui:CardExpander.Content>
+                            <StackPanel>
+                                <DockPanel>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <ui:TextBlock Grid.Row="0"
+                                                      Grid.Column="0"
+                                                      FontTypography="Body"
+                                                      Text="输入视频标识符"
+                                                      Margin="0,0,0,8"
+                                                      TextWrapping="Wrap" />
+                                        <ui:TextBlock Grid.Row="1"
+                                                      Grid.Column="0"
+                                                      Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                                      Text="请带上标识符前的av、bv字样"
+                                                      TextWrapping="Wrap" />
+                                    </Grid>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <ui:TextBox Name="VideoIdTextBox" Margin="0" Height="30" Width="200"></ui:TextBox>
+                                        <ui:Button Name="ExecuteButton" Margin="20,0,0,0" Height="30" Width="60" Content="解析" Click="ExecuteButton_Click" />
+                                    </StackPanel>
+                                </DockPanel>
+                                <Separator Margin="-18,7" BorderThickness="0,1,0,0" Visibility="{Binding ElementName=VideoInfoDockPanel, Path=Visibility}"/>
+                                <DockPanel VerticalAlignment="Center" Height="35" Name="VideoInfoDockPanel" Visibility="Collapsed">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <ui:TextBlock FontSize="15">视频名称：</ui:TextBlock>
+                                        <ui:TextBlock Name="VideoNameTextBlock" FontSize="15">{0}</ui:TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <ui:TextBlock FontSize="15" VerticalAlignment="Center">可选分P：</ui:TextBlock>
+                                            <ComboBox Name="EpSelectComboBox" FontSize="15" IsReadOnly="True" Height="35" Width="250" VerticalAlignment="Center" VerticalContentAlignment="Center"  SelectionChanged="EpSelectComboBox_OnSelectionChanged">
+                                            </ComboBox>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DockPanel>
+                                <DockPanel VerticalAlignment="Center" Height="30" Margin="0,10,0,0" Visibility="{Binding ElementName=VideoInfoDockPanel, Path=Visibility}">
+                                    <ui:TextBlock FontSize="15" VerticalAlignment="Center">可选分辨率：</ui:TextBlock>
+                                    <ComboBox Name="VideoQualityComboBox" FontSize="15" IsReadOnly="True" Height="35" Width="150" VerticalAlignment="Center" VerticalContentAlignment="Center">
+                                    </ComboBox>
+                                    <ui:Button Name="ConfirmDownloadButton" HorizontalAlignment="Right" Width="100" Height="30" Content="确定下载" Click="ConfirmDownloadButton_OnClick" />
+                                </DockPanel>
+                                <Separator Margin="-18,7" BorderThickness="0,1,0,0" Visibility="{Binding ElementName=DownloadStatusGrid, Path=Visibility}"/>
+                                <Grid Name="DownloadStatusGrid" Visibility="Collapsed">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <ProgressBar Name="DownloadProgressBar" Height="10"></ProgressBar>
+                                    <ui:TextBlock Name="DownloadStatusTextBlock" HorizontalAlignment="Right" Grid.Column="1" Margin="20,0,0,0" Text="下载第1个文件中： 0.0MB/1.0MB，速度 20.25 MB/s" FontFamily="{StaticResource Global}"/>
+                                </Grid>
+                            </StackPanel>
+                        </ui:CardExpander.Content>
+                    </ui:CardExpander>
+                </StackPanel>
+            </ScrollViewer.Content>
+        </ui:DynamicScrollViewer>
+    </Grid>
+</Page>
